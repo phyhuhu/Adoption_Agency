@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row row-cols-2">
+        {% if pet.photo_url!='' %}
+        <div class="col">
+            <img src="{{ pet.photo_url }}" class="img-thumbnail" style="height:350px;" alt="no photo">
+        </div>
+        {% endif %}
+
+        <div class="col">
+            <div>
+                <h1 class="card-title">Name: {{ pet.name }}</h1>
+                <h1 class="card-title">Species: {{ pet.species }}</h1>
+                {% if pet.age!='' %}
+                <h1 class="card-title">Age: {{ pet.age }}</h1>
+                {% endif %}
+                {% if pet.notes!='' %}
+                <h1 class="card-title">Notes: {{ pet.notes }}</h1>
+                {% endif %}
+                <a href="/" class="btn btn-outline-primary">Back To Pets Page</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr>
+
+<h1>Edit a Pet</h1>
+<form method="POST">
+    {{ form.hidden_tag() }} <!--add type=hidden form fields -->
+
+    {% for field in form if field.widget.input_type != 'hidden' %}
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            {{ field.label(class="input-group-text")}}
+        </div>
+        {{ field(class="form-control") }}
+    </div>
+    {% endfor %}
+
+    <button type="submit" class="btn btn-primary">Edit</button>
+</form>
+{% endblock %}

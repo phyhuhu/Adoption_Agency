@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="list-group-item active">
+    Add a Pet
+</h1>
+
+<form method="POST">
+    {{ form.hidden_tag() }} <!--add type=hidden form fields -->
+
+    {% for field in form if field.widget.input_type != 'hidden' %}
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+        {{ field.label(class="input-group-text")}}
+        </div>
+        {{ field(class="form-control") }}
+
+        {% for error in field.errors %}
+            {{ error }}
+        {% endfor %}
+    </div>
+    {% endfor %}
+
+    <a type="button" class="btn btn-outline-primary" href='/'>Cancel</a>
+    <button type="submit" class="btn btn-primary">Add</button>
+</form>
+{% endblock %}
