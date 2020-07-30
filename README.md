@@ -1,3 +1,3 @@
 # Adoption Agency
 
-Build a web application for a Pet Adoption Agency by using Flask, SQLAlchemy, PostgreSQL, and WTForm.
+A web application for a Pet Adoption Agency, build by Flask, SQLAlchemy, PostgreSQL, and WTForm.
